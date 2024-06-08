@@ -12,15 +12,16 @@ include_directories(googletest/include)
 #---------------------------------------------------------------------------------
 # Package files
 #---------------------------------------------------------------------------------
-add_executable(hyssop)
-add_subdirectory(src)
+add_executable(hyssop src/get-started.cc)
+#add_subdirectory(src)
 include_directories($(PROJECT_SOURCE_DIR)/include)
 
 #---------------------------------------------------------------------------------
 # Eigen
 #---------------------------------------------------------------------------------
-find_package(Eigen3 3.4 REQUIRED NO_MODULE)
-target_link_libraries(hyssop Eigen3::Eigen)
+#find_package(Eigen3 3.4 REQUIRED NO_MODULE)
+#target_link_libraries(hyssop Eigen3::Eigen)
+include_directories(eigen)
 #---------------------------------------------------------------------------------
 
 #---------------------------------------------------------------------------------
