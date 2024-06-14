@@ -4,6 +4,8 @@
 
 #include <Eigen/Dense>
 
+#include "util.h"
+
 TEST(TheMatrixClass, DefaultConstructorFloatFixedSize) {
     
     Eigen::Matrix3f a;
@@ -61,11 +63,7 @@ TEST(TheMatrixClass, initMatrixRows) {
     std::vector<std::vector<int>> v = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
     Eigen::Matrix3i m{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
 
-    for (size_t i = 0; i < m.rows(); i++) {
-        for (size_t j = 0; j < m.cols(); j++) {
-            EXPECT_EQ(m(i,j), v[i][j]);
-        }
-    }
+    EXPECT_TRUE(MatrixEqVector<int>(m, v)); // need to explicitly set template parameter for fixed-size matrices
 
 }
 
@@ -76,11 +74,7 @@ TEST(TheMatrixClass, InitMatrixWithCommaSeparatedValues) {
 
     m << 1, 2, 3, 4, 5, 6, 7, 8, 9;
 
-    for (size_t i = 0; i < 3; i++) {
-        for (size_t j = 0; j < 3; j++) {
-            EXPECT_EQ(m(i,j), v[i][j]);
-        }
-    }
+    EXPECT_TRUE(MatrixEqVector<int>(m, v));
 
 }
 
@@ -115,12 +109,7 @@ TEST(TheMatrixClass, ResizeShrink) {
 
     m.conservativeResize(2,2); // m.resize() re-allocates m_storage
 
-    for (size_t i = 0; i < m.rows(); i++) {
-        for (size_t j = 0; j < m.cols(); j++) {
-            auto value = m(i,j); 
-            EXPECT_EQ(m(i,j), v[i][j]);
-        }
-    }
+    EXPECT_TRUE(MatrixEqVector(m, v));
 
 }
 
@@ -137,9 +126,5 @@ TEST(TheMatrixClass, ResizeByAssignment) {
     EXPECT_EQ(a.rows(), b.rows());
     EXPECT_EQ(a.cols(), b.cols());
 
-    for (size_t i = 0; i < a.rows(); i++) {
-        for (size_t j = 0; j < a.cols(); j++) {
-            EXPECT_EQ(a(i,j), v[i][j]);
-        }
-    }
+    EXPECT_TRUE(MatrixEqVector(a, v));
 }
