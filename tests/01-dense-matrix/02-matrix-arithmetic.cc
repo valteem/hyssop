@@ -4,7 +4,7 @@
 
 #include "util.h"
 
-TEST(MatrixArithmetic, addition) {
+TEST(MatrixArithmetic, Addition) {
     
     Eigen::MatrixXi a{{1, 2}, {3, 4}};
     Eigen::MatrixXi b{{1, 2}, {3, 4}};

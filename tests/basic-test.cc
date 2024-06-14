@@ -2,7 +2,7 @@
 
 #include <Eigen/Dense>
 
-TEST(primary, basic) {
+TEST(Primary, Basic) {
     Eigen::Matrix<int,2,2> m;
     m(0,0) = 1;
     m(1,1) = 1;
@@ -10,6 +10,6 @@ TEST(primary, basic) {
     GTEST_ASSERT_EQ(tr, 2);
 };
 
-TEST(primary, standalone) {
+TEST(Primary, Standalone) {
     EXPECT_EQ(3*4, 12);
 }

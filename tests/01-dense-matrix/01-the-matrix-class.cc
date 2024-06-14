@@ -4,7 +4,7 @@
 
 #include <Eigen/Dense>
 
-TEST(the_matrix_class, default_constructor_float_fixed_size) {
+TEST(TheMatrixClass, DefaultConstructorFloatFixedSize) {
     
     Eigen::Matrix3f a;
     
@@ -19,7 +19,7 @@ TEST(the_matrix_class, default_constructor_float_fixed_size) {
 
 }
 
-TEST(the_matrix_class, default_constructor_int_fixed_size) {
+TEST(TheMatrixClass, DefaultConstructorIntFixedSize) {
 
     Eigen::Matrix3i b;
 
@@ -32,7 +32,7 @@ TEST(the_matrix_class, default_constructor_int_fixed_size) {
 
 }
 
-TEST(the_matrix_class, default_constructor_int_dynamic_size) {
+TEST(TheMatrixClass, DefaultConstructorIntDynamicSize) {
 
     Eigen::MatrixXi c;
 
@@ -42,7 +42,7 @@ TEST(the_matrix_class, default_constructor_int_dynamic_size) {
 
 }
 
-TEST(the_matrix_class, init_with_std_vector) {
+TEST(TheMatrixClass, InitWithStdVector) {
 
     std::vector<int> sv = {0, 1, 2, 3};
     Eigen::Vector4i ev(sv.data());
@@ -56,7 +56,7 @@ TEST(the_matrix_class, init_with_std_vector) {
     }
 }
 
-TEST(the_matrix_class, init_matrix_rows) {
+TEST(TheMatrixClass, initMatrixRows) {
 
     std::vector<std::vector<int>> v = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
     Eigen::Matrix3i m{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
@@ -69,7 +69,7 @@ TEST(the_matrix_class, init_matrix_rows) {
 
 }
 
-TEST(the_matrix_class, init_matrix_with_comma_separated_values) {
+TEST(TheMatrixClass, InitMatrixWithCommaSeparatedValues) {
 
     std::vector<std::vector<int>> v = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
     Eigen::Matrix3i m;
@@ -84,7 +84,7 @@ TEST(the_matrix_class, init_matrix_with_comma_separated_values) {
 
 }
 
-TEST(the_matrix_class, resize_dynamic_predefined) {
+TEST(TheMatrixClass, ResizeDynamicPredefined) {
 
     Eigen::MatrixXf m(1, 2);
     
@@ -95,7 +95,7 @@ TEST(the_matrix_class, resize_dynamic_predefined) {
 
 }
 
-TEST(the_matrix_class, resize_dynamic_initial) {
+TEST(TheMatrixClass, ResizeDynamicEmpty) {
 
     Eigen::MatrixXf m;
     
@@ -106,7 +106,7 @@ TEST(the_matrix_class, resize_dynamic_initial) {
 
 }
 
-TEST(the_matrix_class, resize_shrink) {
+TEST(TheMatrixClass, ResizeShrink) {
 
     std::vector<std::vector<int>> v = {{1, 2}, {4, 5}};
     Eigen::MatrixXi m(3,3);
@@ -124,7 +124,7 @@ TEST(the_matrix_class, resize_shrink) {
 
 }
 
-TEST(the_matrix_class, resize_by_assignment) {
+TEST(TheMatrixClass, ResizeByAssignment) {
 
     Eigen::MatrixXi a(2,2);
     Eigen::Matrix3i b{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
