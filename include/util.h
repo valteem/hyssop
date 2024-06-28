@@ -18,4 +18,14 @@ bool MatrixEqVector(Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic> m, std::vec
     return true;
 }
 
+template <typename T>
+bool VectorEqVector(Eigen::Vector<T, Eigen::Dynamic> ev, std::vector<T> sv)  {
+    for (size_t i = 0; i < ev.size(); i++) {
+        if (ev(i) != sv[i]) {
+            return false;
+        };
+    }
+    return true;
+}
+
 #endif // HYSSOP_UTILITIES_H

@@ -141,3 +141,55 @@ TEST(MatrixArithmetic, Conjugate) {
     EXPECT_TRUE(MatrixEqVector<std::complex<int>>(b, v));
 
 }
+
+TEST(MatrixArithmetic, MatrixVectorMultiply) {
+
+    Eigen::Matrix3i m{{1, 1, 1}, {2, 2, 2}, {3, 3, 3}};
+
+    Eigen::Vector3i v{2, 2, 2};
+
+    std::vector<int> r{6, 12, 18};
+
+    v = m * v;
+
+    EXPECT_TRUE(VectorEqVector<int>(v, r));
+}
+
+TEST(MatrixArithmetic, MatrixMatrixMultiply) {
+
+    Eigen::Matrix2f m{{1.0, 2.0}, {2.0, 1.0}};
+    Eigen::Matrix2f n{{1.0, 0.0}, {0.0, 1.0}};
+
+    std::vector<std::vector<float>> v{{1.0, 2.0}, {2.0, 1.0}};
+
+    m = m * n;
+
+    EXPECT_TRUE(MatrixEqVector<float>(m, v));
+
+}
+
+TEST(MatrixArithmetic, DotProduct) {
+
+    Eigen::Vector3f v{1.0, 2.0, 3.0};
+    Eigen::Vector3f u{3.0, 2.0, 1.0};
+
+    float dot_product_expected {10.0};
+
+    auto dot_product_actual = v.dot(u);
+
+    EXPECT_TRUE(dot_product_actual == dot_product_expected);
+
+}
+
+TEST(MatrixArithmetic, CrossProduct) {
+    
+    Eigen::Vector3f v{1.0, 2.0, 3.0};
+    Eigen::Vector3f u{1.5, 3.0, 4.5};
+
+    std::vector<float> w{0.0, 0.0, 0.0};
+
+    v = v.cross(u);
+
+    EXPECT_TRUE(VectorEqVector<float>(v, w));
+
+}
