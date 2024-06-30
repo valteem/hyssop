@@ -193,3 +193,26 @@ TEST(MatrixArithmetic, CrossProduct) {
     EXPECT_TRUE(VectorEqVector<float>(v, w));
 
 }
+
+TEST(MatrixArithmetic, Reduction) {
+
+    Eigen::Matrix2i m{{1, 3}, {5, 7}};
+
+    int expected_sum {16};
+    EXPECT_EQ(m.sum(), expected_sum);
+
+    int expected_prod {105};
+    EXPECT_EQ(m.prod(), expected_prod);
+
+    int expected_mean (4);
+    EXPECT_EQ(m.mean(), expected_mean);
+
+    int expected_max_coef {7};
+    EXPECT_EQ(m.maxCoeff(), expected_max_coef);
+
+    int expected_min_coef{1};
+    EXPECT_EQ(m.minCoeff(), expected_min_coef);
+
+    int expected_trace{8};
+    EXPECT_EQ(m.trace(), expected_trace);
+}
