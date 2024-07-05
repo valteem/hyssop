@@ -1,1 +1,1 @@
-target_sources(hyssop_test PRIVATE 01-the-matrix-class.cc 02-matrix-arithmetic.cc)
+target_sources(hyssop_test PRIVATE 01-the-matrix-class.cc 02-matrix-arithmetic.cc 03-the-array-class.cc)

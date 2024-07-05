@@ -28,4 +28,22 @@ bool VectorEqVector(Eigen::Vector<T, Eigen::Dynamic> ev, std::vector<T> sv)  {
     return true;
 }
 
+template <typename T>
+bool ArrayEqVector(Eigen::Array<T, Eigen::Dynamic, Eigen::Dynamic> a, std::vector<std::vector<T>> v)  {
+    for (size_t i = 0; i < a.rows(); i++) {
+        for (size_t j = 0; j < a.cols(); j++) {
+            if (a(i,j) != v[i][j]) {
+                return false;
+            };
+        }
+    }
+    return true;
+}
+
+/** Compare Eigen matrices. Use with EXPECT_PRED2 */
+inline bool MatricesApproxXXi(const Eigen::MatrixXi &expected,
+                           const Eigen::MatrixXi &actual) {
+    return expected.isApprox(actual);
+}
+
 #endif // HYSSOP_UTILITIES_H
