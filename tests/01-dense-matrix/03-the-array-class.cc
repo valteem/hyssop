@@ -2,7 +2,7 @@
 
 #include "Eigen/Dense"
 
-#include "util.h"
+#include "hyssop/util.h"
 
 TEST(TheArrayClass, AddSubstractMultiply) {
     
