@@ -29,6 +29,6 @@ TEST(TheArrayClass, AddSubstractMultiply) {
 
  // Compare actual and expected results with isApprox() helper function
 
-    EXPECT_PRED2(MatricesApproxXXi, r.matrix(), er.matrix());
+    EXPECT_PRED2(MatricesApproxXi, r.matrix(), er.matrix());
 
 }

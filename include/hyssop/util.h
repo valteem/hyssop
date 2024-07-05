@@ -41,8 +41,14 @@ bool ArrayEqVector(Eigen::Array<T, Eigen::Dynamic, Eigen::Dynamic> a, std::vecto
 }
 
 /** Compare Eigen matrices. Use with EXPECT_PRED2 */
-inline bool MatricesApproxXXi(const Eigen::MatrixXi &expected,
-                           const Eigen::MatrixXi &actual) {
+inline bool MatricesApproxXi(const Eigen::MatrixXi &expected,
+                             const Eigen::MatrixXi &actual) {
+    return expected.isApprox(actual);
+}
+
+/** Compare Eigen vectors. Use with EXPECT_PRED2 */
+inline bool VectorsApproxXi(const Eigen::VectorXi &expected,
+                            const Eigen::VectorXi &actual) {
     return expected.isApprox(actual);
 }
 
