@@ -66,3 +66,29 @@ TEST(SlicingAndIndexing, MiddleRow) {
     EXPECT_PRED2(MatricesApproxXi, output, e);
 
 }
+
+// Works for fixed size vectors only
+TEST(SlicingAndIndexing, LastElementsStartingAtIndex) {
+
+    Eigen::Vector4i input {0, 1, 2, 3};
+
+    Eigen::Vector2i expected {2, 3};
+
+    Eigen::Vector2i output = input(Eigen::seq(2, Eigen::placeholders::last));
+
+    EXPECT_PRED2(VectorsApproxXi, output, expected);
+
+}
+
+// Does not work with input vector of non-fixed size (VectorXi)
+TEST(SlicingAndIndexing, LastElementsNumber) {
+
+    Eigen::Vector4i input(0, 1, 2, 3);
+
+    Eigen::Vector3i expected {1, 2, 3};
+
+    Eigen::Vector3i output = input(Eigen::seq(Eigen::placeholders::last + 1 - 3, Eigen::placeholders::last));
+
+    EXPECT_PRED2(VectorsApproxXi, output, expected);
+
+}
