@@ -1,1 +1,1 @@
-A collection of tests aimed at learning some basic stuff about popular C++ linear algebra repositories
+A collection of tests aimed at learning some basic stuff about popular C++ linear algebra packages
