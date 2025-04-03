@@ -4,6 +4,8 @@
 
 #include "hyssop/util.h"
 
+#include <vector>
+
 TEST(SlicingAndIndexing, BottomRight) {
 
     Eigen::MatrixXi m {{1, 2, 3, 4}, {1, 2, 3, 4}, {1, 2, 3, 4}};
@@ -90,5 +92,21 @@ TEST(SlicingAndIndexing, LastElementsNumber) {
     Eigen::Vector3i output = input(Eigen::seq(Eigen::placeholders::last + 1 - 3, Eigen::placeholders::last));
 
     EXPECT_PRED2(VectorsApproxXi, output, expected);
+
+}
+
+TEST(SlicingAndIndexing, ArrayOfIndices) {
+
+    Eigen::MatrixXi input {{0, 0, 0, 0}, {1, 1, 1, 1}, {2, 2, 2, 2}, {3, 3, 3, 3}};
+
+    std::vector<int> ind {2, 1, 0, 3};
+
+    Eigen::MatrixXi output = input(ind, Eigen::placeholders::all);
+
+    Eigen::MatrixXi expected {{2, 2, 2, 2}, {1, 1, 1, 1}, {0, 0, 0, 0}, {3, 3, 3, 3}};
+
+    std::cout << output << std::endl;
+
+    EXPECT_PRED2(MatricesApproxXi, output, expected);
 
 }
