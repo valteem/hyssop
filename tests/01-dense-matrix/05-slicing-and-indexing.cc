@@ -110,3 +110,22 @@ TEST(SlicingAndIndexing, ArrayOfIndices) {
     EXPECT_PRED2(MatricesApproxXi, output, expected);
 
 }
+
+TEST(SkicingAndIndexing, CustomIndexList) {
+
+    class pad {
+        public:
+        Eigen::Index size_in, size_out;
+        Eigen::Index size() const {return size_out;};
+        Eigen::Index operator[] (Eigen::Index i) const {return std::max<Eigen::Index>(0, i - (size_out - size_in));};
+    };
+
+    Eigen::MatrixXi input {{1, 2, 3, 4}, {1, 2, 3, 4}, {1, 2, 3, 4}, {1, 2, 3, 4}};
+
+    Eigen::MatrixXi expected {{1, 1, 2, 3, 4}, {1, 1, 2, 3, 4}, {1, 1, 2, 3, 4}, {1, 1, 2, 3, 4}, {1, 1, 2, 3, 4}};
+
+    Eigen::MatrixXi output = input(pad{4, 5}, pad{4, 5});
+
+    EXPECT_PRED2(MatricesApproxXi, output, expected);
+
+}
